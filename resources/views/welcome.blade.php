@@ -89,8 +89,9 @@
 
         <div class="row mt-5">
             <div class="col-sm-8">
-@foreach($events as $event)
                 <div id="event-break"><b>Events</b></div>
+@foreach($events as $event)
+
                     <div class=" row mt-2" id="events">
 
                         <div class="col-sm-4" style='background-repeat: no-repeat, repeat;background-size: cover;height:200px;background-position: center; background-image: url("{{ url('public/Image/'.$event->photo) }}");'></div>

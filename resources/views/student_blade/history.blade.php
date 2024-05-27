@@ -14,14 +14,14 @@
                         </div>
                     @endif
 
-                  
+
                <div class="row" style="text-align:center">
                     <div class="col-sm-4"><a href="/user/set-appointment"><Button class="" style="width:90%;border:none;background:#fb8500;border-radius: 5px;"  >Set Appointment</Button></a></div>
                     <div class="col-sm-4"><a href="/user/appointment-status"><Button style="width:90%;border:none;background:#fb8500;border-radius: 5px;" >Appointment Status</Button></a></div>
                     <div class="col-sm-4"><a href="/user/history"><Button  style="width:90%;border:none;background:#FFD300;border-radius: 5px;">Appointment History</Button></a></div>
                </div>
 
-               
+
             <div class="row justify-content-center mt-5">
                 <div class="col-md-12">
                     <div class="card">
@@ -56,7 +56,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                        
+
 
                                 </div>
                             </div>
@@ -64,7 +64,7 @@
                     </div>
                 </div>
             </div>
-                    
+
 
 <!--  -->
                 </div>

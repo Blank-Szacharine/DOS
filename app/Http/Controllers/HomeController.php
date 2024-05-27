@@ -240,16 +240,20 @@ public function getData(Request $request){
             if($history_date == null)
             {
                 $history = DB::table('appoinments')
+                ->leftJoin('profile','appoinments.sender_id','profile.user_id')
                 ->whereYear('appointment_date',$year)
                 ->where('appointment_date','<',Carbon::now())
+                ->orderBy('profile.year','ASC')
                 ->get();
             }
             else
             {
                 $history = DB::table('appoinments')
+                ->leftJoin('profile','appoinments.sender_id','profile.user_id')
                 ->whereYear('appointment_date',$arraycontent[0])
                 ->whereMonth('appointment_date',$arraycontent[1])
                 ->where('appointment_date','<',Carbon::now())
+                ->orderBy('profile.year','ASC')
                 ->get();
             }
 

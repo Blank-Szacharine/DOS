@@ -65,7 +65,7 @@
                                         <div hidden>
                                         <input type="text" name="id_request" value="{{$request_info->id}}">
                                         <input type="date" id="final_date" name="final_date">
-                                        <input type="time" id="appointment_timex" name="appointment_time" required>
+                                        <input type="time" id="appointment_time" name="appointment_time" required>
                                         </div>
                                     </form>
 

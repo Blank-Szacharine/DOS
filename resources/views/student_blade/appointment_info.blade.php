@@ -30,13 +30,13 @@
                 <div class="row mt-3 p-3">
                     <div class="col-sm-6">
                             <h3>Appointment Type: <b>{{$info->appointment_type}}</b></h3>
+                            <h3>Appointment Date of Send: <b>{{$info->appointment_date_send}}</b></h3>
                             <h3>Appointment Date Schedule: <b>{{$info->appointment_date}}</b></h3>
-                            <h3>Appointment Time Schedule: <b><input type="time" value="{{$info->appointment_time}}" disabled></b></h3>
 
                             <h3>Appointment Status: <b>{{$info->appointment_status}}</b></h3>
 
                             <br><br><br><br>
-                            <h3>Please Show this number this to the Dean to know your Transaction</h3>
+                            <h3>Please Show this number to the Dean to know your Transaction</h3>
                             <h1>{{$info->id}}</h1>
 
 

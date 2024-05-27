@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                  
+
 
 <!--  -->
 
@@ -43,7 +43,7 @@
                                         <div class="input-group mb-3">
                                                 <input type="text" name="address"  class="form-control" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1">
                                         </div>
-                                        
+
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="input-group mb-3">
@@ -84,7 +84,7 @@
                                         <div class="input-group mb-3">
                                                 <input type="text" name="address" value="{{$info->address}}" class="form-control" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1">
                                         </div>
-                                        
+
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="input-group mb-3">

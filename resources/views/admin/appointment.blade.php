@@ -53,7 +53,17 @@
                                                 <td>{{$items->appointment_sender}}</td>
                                                 <td>{{$items->appointment_type}}</td>
                                                 <td>{{$items->appointment_date}}</td>
-                                                <td>{{$items->appointment_status}}</td>
+                                                <td>
+                                                    @if ($items->appointment_status == "pending")
+                                                    <button class="btn btn-primary">{{$items->appointment_status}}</button>
+                                                    @elseif ($items->appointment_status == "accepted")
+                                                    <button class="btn btn-warning">{{$items->appointment_status}}</button>
+                                                    @elseif ($items->appointment_status == "Un-attended")
+                                                    <button class="btn btn-danger">{{$items->appointment_status}}</button>
+                                                    @else
+                                                    <button class="btn btn-success">{{$items->appointment_status}}</button>
+                                                    @endif
+                                                </td>
                                                 <td><a href="{{url('/admin/view/appointment',$items->id)}}"><button class="btn btn-primary">Views</button></a></td>
 
                                     </tr>

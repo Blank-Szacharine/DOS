@@ -17,7 +17,7 @@ use Carbon\Carbon;
 Route::get('/', function () {
     $currentDate = now();
     $events = DB::table('events')
-        ->whereDate('date', '<', $currentDate)
+        ->whereDate('date', '>', $currentDate)
         ->orwhereDate('date', $currentDate)
         ->get();
     return view('welcome')
@@ -115,12 +115,81 @@ Route::middleware('auth')->group(function () {
             return view('home', compact('count_pending', 'appointment', 'appointmentnow', 'count_today', 'count_unfinish', 'monthly_appointment', 'all', 'year', 'month'));
         } elseif (Auth::user()->role == "user") {
             $currentDate = now();
+
+            $test = DB::table('appoinments')
+                ->where(function ($query) {
+                    $query->where('appointment_status', 'pending')
+                        ->orWhere('appointment_status', 'accepted');
+                })
+                ->whereDate('appointment_date', '<', $currentDate)
+                ->get('id');
+
+
+
+            foreach ($test as $row) {
+
+                DB::table('appoinments')
+                    ->where('id', $row->id)
+                    ->where(function ($query) {
+                        $query->where('appointment_status', 'pending')
+                            ->orWhere('appointment_status', 'accepted');
+                    })
+                    ->update([
+                        'appointment_status' => 'Un-attended'
+                    ]);
+            }
+
+            $appointment = DB::table('appoinments')
+                ->where('appointment_status', 'pending')
+                ->paginate(2);
+
+            $currentdate = Carbon::now()->format('Y-m-d');
+
+            $appointmentnow = DB::table('appoinments')
+                ->where('appointment_status', 'accepted')
+                ->where('appointment_date', $currentdate)
+                ->paginate(2);
+
+            $count_today = DB::table('appoinments')
+                ->where('appointment_status', 'accepted')
+                ->where('appointment_date', $currentdate)
+                ->count();
+
+            $count_unfinish = DB::table('appoinments')
+                ->where('appointment_status', 'accepted')
+                ->count();
+
+            $date = Carbon::now();
+
+            $year = $date->format('Y');
+            $month = $date->format('m');
+            $day = $date->format('d');
+
+            $monthly_appointment = DB::table('appoinments')
+                ->whereYear('appointment_date', $year)
+                ->whereMonth('appointment_date', $month)
+                ->where('appointment_status', 'accepted')
+                ->orderBy('appointment_date')
+                ->get();
+
+            $all = DB::table('appoinments')
+                ->select(DB::raw('count(*) as user_count', ''))
+                ->whereYear('appointment_date', $year)
+                ->whereMonth('appointment_date', $month)
+                ->get();
+
+
+
+
+
+
+            $count_pending = count($appointment);
             $events = DB::table('events')
-                ->whereDate('date', '<', $currentDate)
+                ->whereDate('date', '>', $currentDate)
                 ->orwhereDate('date', $currentDate)
                 ->get();
-            return view('student_blade.home')
-                ->with('events', $events);
+            return view('student_blade.home',compact('count_pending', 'appointment', 'appointmentnow', 'count_today', 'count_unfinish', 'monthly_appointment', 'all', 'year', 'month','events'));
+
         } else {
 
         }

@@ -50,7 +50,6 @@
                                                 <input style="width:200px"  name="appointment_date"  type="date" id="txtDate"/>
                                             </div>
 
-
                                             <div class="mt-3">
                                                 <label for="comment">Description</label>
                                                 <textarea name="appointment_description" id="comment" style="width:100%" rows="10"></textarea>
